@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+<!-- 커넥션 풀을 사용하는 방법 2가지-->
+<!-- Sever.xml 파일에 입력한 커넥션 풀 내용을 Context.xml이 대신 받아서  jsp 파일에서 사용할 수 있도록 중계함-->
+    <ResourceLink name = "context_dbcp_mysql"
+                  global = "global_dbcp_mysql"
+                  type = "javax.sql.DataSource" />
+
+<!-- Sever.xml 파일에 입력하는 내용을 context.xml 파일에 직접 입력하여 사용하는 방식-->
+    <Resource name="dbcp_mysql"
+              auth ="Container"
+              initialization = "0"
+              minIdle = "5"
+              maxIdle ="20"
+              maxTotal ="20"
+              maxWaitMillis = "5000"
+              driverClassName = "com.mysql.cj.jdbc.Driver"
+              type = "javax.sql.DataSource"
+              url="jdbc:mysql://localhost:3306/testdb?characterEncoding=UTF-8&amp;erverTimezone=UTC"
+              username ="test1"
+              password ="fullstack501"
+    />
+</Context>
