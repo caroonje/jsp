@@ -1,4 +1,4 @@
-package database;
+package com.bitc.jsp1106_mvc1.database;
 
 public class BoardDto {
     private int num;

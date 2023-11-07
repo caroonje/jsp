@@ -6,28 +6,46 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MVC1 게시판 - 삭제 페이지 </title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+<%@ page import="com.bitc.jsp1106_mvc1.database.BoardDao" %>
+<%@ page import="com.bitc.jsp1106_mvc1.utils.JSFunction" %>
 
-    <style>
+<%
+    request.setCharacterEncoding("UTF-8");
 
-    </style>
-    <script>
+    int num = Integer.parseInt(request.getParameter("num"));
+    String id = request.getParameter("id");
+//    글 삭제 시 글 작성자가 현재 로그인한 사용자 인지 확인
+//    if (id.equals(session.getAttribute("userId").toString())){
+        if (id.equals("test1")){
+//        작성자와 로그인한 사용자가 같으면 데이터 베이스에 연결 후 글 삭제
+        BoardDao dao = new BoardDao(application);
+        dao.dbOpen();
+        int result = dao.deletePost(num);
+        dao.dbClose();
 
-    </script>
+        if (result == 1){
+            JSFunction.alertLocation("삭제되었습니다.","./List.jsp",out);
+//            out.print("<script>");
+//            out.print("alert('삭제되었습니다..');");
+//            out.print("location.href = './List.jsp';");
+//            out.print("</script>");
+        }else {
+            JSFunction.alertBack("삭제 중 오류가 발생했습니다.",out);
+//            out.print("<script>");
+//            out.print("alert('삭제 중 오류가 발생했습니다.');");
+//            out.print("history.back();");
+//            out.print("</script>");
+        }
+    }else {
+            JSFunction.alertBack("작성자 본인만 삭제할 수 있습니다.", out);
+        //작성자와 로그인한 사용자가 같지 않으면 뒤로 가기
+//        out.print("<script>");
+//        out.print("alert('작성자 본인만 삭제할 수 있습니다.');");
+//        out.print("history.back();");
+//        out.print("</script>");
+    }
 
-</head>
-<body>
-<h1> MVC1 게시판 - 삭제 처리 페이지</h1>
-</body>
-</html>
+
+
+%>

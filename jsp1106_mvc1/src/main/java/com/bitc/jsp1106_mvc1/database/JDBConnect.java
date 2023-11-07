@@ -1,4 +1,4 @@
-package database;
+package com.bitc.jsp1106_mvc1.database;
 
 import jakarta.servlet.ServletContext;
 
@@ -16,7 +16,7 @@ public class JDBConnect {
 
     public JDBConnect(){
     this("com.mysql.cj.jdbc.Driver",
-            "jdbc.mysql://localhost:3306/testdb?characterEncoding=UTF-8&serverTimezone=UTC",
+            "jdbc.mysql://localhost:3306/testdb",
             "test1",
             "fullstack501"
         );
