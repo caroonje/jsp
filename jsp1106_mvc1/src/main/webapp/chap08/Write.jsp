@@ -6,17 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<jsp:include page="./Login/LoginCheck.jsp"></jsp:include>
 
-<%--로그인 체크--%>
-<%--<%--%>
-<%--    if (session.getAttribute("UserId")==null){--%>
-<%--        out.print("<script>");--%>
-<%--        out.print("alert('로그인 후 이용해 주세요');");--%>
-<%--        out.print("location.href = './LoginForm.jsp'");--%>
-<%--        out.print("</script>");--%>
-<%--//  로그인 페이지로 이동 response.sendRedirect("./LoginForm.jsp");--%>
-<%--    }--%>
-<%--%>--%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,8 +37,8 @@ $(document).ready(function (){
 
 </head>
 <body>
-<h1>MVC1 게시판 - 등록 페이지 </h1>
-<header></header>
+<%@ include file="layout/Menu.jsp"%>
+<%@ include file="layout/Header.jsp"%>
 <main class="container mt-5">
 <section>
     <div class="row my-3">
@@ -71,6 +62,6 @@ $(document).ready(function (){
     </div>
 </section>
 </main>
-<footer></footer>
+<%@ include file="layout/Footer.jsp"%>
 </body>
 </html>

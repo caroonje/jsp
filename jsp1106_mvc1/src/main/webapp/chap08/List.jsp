@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: it
@@ -12,6 +13,16 @@
 <%@ page import="java.util.List" %>
 
 <%
+
+
+    String userId = "";
+    String userName = "";
+    if (session.getAttribute("userId") != null) {
+        userId = (String) session.getAttribute("userId");
+        userName = (String) session.getAttribute("userName");
+
+    }
+
     List<BoardDto> boardList;
 
     BoardDao dao = new BoardDao(application);
@@ -41,10 +52,8 @@
 
 </head>
 <body>
-<h1>목록 페이지</h1>
-<header>
-
-</header>
+<%@ include file="./layout/Menu.jsp"%>
+<%@ include file="layout/Header.jsp"%>
 
 <main class="container mt-5">
     <section>
@@ -73,11 +82,17 @@
                     %>
 
                     <tr>
-                        <td><%=board.getNum()%></td>
-                        <td class="text-start"><a href="View.jsp?num=<%=board.getNum()%>" class="text-decoration-none"><%=board.getTitle()%></a></td>
-                        <td><%=board.getId()%></td>
-                        <td><%=board.getVisitcount()%></td>
-                        <td><%=board.getPostdate()%></td>
+                        <td><%=board.getNum()%>
+                        </td>
+                        <td class="text-start"><a href="View.jsp?num=<%=board.getNum()%>"
+                                                  class="text-decoration-none"><%=board.getTitle()%>
+                        </a></td>
+                        <td><%=board.getId()%>
+                        </td>
+                        <td><%=board.getVisitcount()%>
+                        </td>
+                        <td><%=board.getPostdate()%>
+                        </td>
                     </tr>
                     <%
                         }
@@ -89,16 +104,14 @@
         <div class="row my-3">
             <div class="col-sm">
                 <div class="d-flex justify-content-end">
-                    <a href="Write.jsp" class="btn btn-primary">글쓰기</a>
+                    <a href="./Write.jsp" class="btn btn-primary">글쓰기</a>
                 </div>
             </div>
         </div>
     </section>
 </main>
 
-<footer>
-
-</footer>
+<%@ include file="./layout/Footer.jsp"%>
 
 
 </body>

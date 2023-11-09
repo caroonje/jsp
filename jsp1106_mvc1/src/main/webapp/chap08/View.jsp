@@ -17,6 +17,7 @@
     BoardDao dao = new BoardDao(application);
     dao.dbOpen();
     BoardDto board = dao.selectView(num);
+    dao.updateVisitCount(num);
     dao.dbClose();
 
 %>
@@ -60,12 +61,13 @@
             $("#btn-list").on("click",function (){
                 location.href = "./List.jsp";
             });
-        });
+        })
     </script>
 
 </head>
 <body>
-<header></header>
+<%@ include file="layout/Menu.jsp"%>
+<%@ include file="layout/Header.jsp"%>
 <main class="container mt-5">
     <section>
         <form id="frm" action="" method="post">
@@ -123,9 +125,7 @@
         </form>
     </section>
 </main>
-<footer>
-
-</footer>
+<%@ include file="layout/Footer.jsp"%>
 </body>
 </html>
 

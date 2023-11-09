@@ -118,7 +118,7 @@ public class BoardDao extends JDBConnect {
             pstmt.setString(1, board.getTitle());
             pstmt.setString(2, board.getContent());
             pstmt.setInt(3, board.getNum());
-            pstmt.executeUpdate();
+            result = pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println("----- 데이터 수정 중 오류 발생 -----");
